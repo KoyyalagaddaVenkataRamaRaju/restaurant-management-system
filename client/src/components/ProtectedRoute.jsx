@@ -1,4 +1,5 @@
 import { Navigate } from "react-router-dom";
+const API_URL = import.meta.env.VITE_API_URL;
 
 const ProtectedRoute = ({ children, allowedRoles }) => {
   const role = localStorage.getItem("role");

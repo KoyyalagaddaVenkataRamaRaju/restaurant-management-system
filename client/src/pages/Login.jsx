@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../styles/Login.css"
+const API_URL = import.meta.env.VITE_API_URL;
 
 const Login = () => {
   const [formData, setFormData] = useState({ name: "", password: "" });
@@ -17,7 +18,7 @@ const Login = () => {
     setError("");
   
     try {
-      const response = await axios.post(`http://localhost:5000/auth/login`, formData);
+      const response = await axios.post(`${API_URL}/auth/login`, formData);
       const { token, role } = response.data;
   
       if (!token || !role) {

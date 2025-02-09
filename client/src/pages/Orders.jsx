@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import "../styles/Orders.css";
+const API_URL = import.meta.env.VITE_API_URL;
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
@@ -21,7 +22,7 @@ const Orders = () => {
     // Fetch orders
     const fetchOrders = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/orders");
+        const response = await axios.get(`${API_URL}/api/orders`);
         setOrders(response.data);
       } catch (error) {
         console.error("Error fetching orders:", error);
@@ -33,17 +34,17 @@ const Orders = () => {
   const markAsPrepared = async (orderId, tableNumber) => {
     try {
       // Update the order status to "Prepared"
-      const orderResponse = await axios.put(`http://localhost:5000/api/orders/${orderId}`, { status: "prepared" });
+      const orderResponse = await axios.put(`${API_URL}/api/orders/${orderId}`, { status: "prepared" });
       console.log("Order update response:", orderResponse.data);
 
       // Change table status to "Eating"
-      const tableResponse = await axios.put(`http://localhost:5000/api/tables/${tableNumber}`, { status: "eating" });
+      const tableResponse = await axios.put(`${API_URL}/api/tables/${tableNumber}`, { status: "eating" });
       console.log("Table update response:", tableResponse.data);
 
       setTimeout(async () => {
         try {
           // Change table status to "Free" after 1 minute
-          const freeTableResponse = await axios.put(`http://localhost:5000/api/tables/${tableNumber}`, { status: "free" });
+          const freeTableResponse = await axios.put(`${API_URL}/api/tables/${tableNumber}`, { status: "free" });
           console.log("Table status updated to Free:", freeTableResponse.data);
         } catch (error) {
           console.error("Error updating table status to Free:", error);

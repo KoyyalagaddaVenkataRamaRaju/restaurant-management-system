@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link,useParams } from "react-router-dom";
 import "../styles/Navbar.css";
+const API_URL = import.meta.env.VITE_API_URL;
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);

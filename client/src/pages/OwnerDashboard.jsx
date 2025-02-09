@@ -3,6 +3,7 @@ import axios from "axios";
 import Navbar from "../components/Navbar";
 import "../styles/OwnerDashboard.css";
 import TableStatus from "../components/Tablestatus";
+const API_URL = import.meta.env.VITE_API_URL;
 
 const OwnerDashboard = () => {
   const [numTables, setNumTables] = useState("");
@@ -27,7 +28,7 @@ const OwnerDashboard = () => {
   useEffect(() => {
     const fetchTotalRevenue = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/orders");
+        const response = await axios.get(`${API_URL}/api/orders`);
         const total = response.data.reduce(
           (acc, order) => acc + order.totalPrice,
           0
@@ -45,7 +46,7 @@ const OwnerDashboard = () => {
   const handleTableSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/api/addTables", {
+      const response = await axios.post(`${API_URL}/api/addTables`, {
         numberOfTables: parseInt(numTables),
       });
       alert(response.data.message);
@@ -64,7 +65,7 @@ const OwnerDashboard = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/users",
+        `${API_URL}/api/users`,
         userFormData
       );
       alert(response.data.message);
@@ -84,7 +85,7 @@ const OwnerDashboard = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/menu",
+        `${API_URL}/api/menu`,
         menuItemFormData
       );
       alert(response.data.message);

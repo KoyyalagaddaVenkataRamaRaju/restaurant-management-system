@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+const API_URL = import.meta.env.VITE_API_URL;
 
 const TableStatus = () => {
   const [tables, setTables] = useState([]);
@@ -7,7 +8,7 @@ const TableStatus = () => {
   // Fetch the current status of tables
   const fetchTables = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/tables');
+      const response = await axios.get(`${API_URL}/api/tables`);
       setTables(response.data);
     } catch (error) {
       console.error('Error fetching tables:', error);

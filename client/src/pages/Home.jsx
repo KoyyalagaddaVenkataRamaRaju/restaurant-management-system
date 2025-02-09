@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../components/Navbar";
 import "../styles/Home.css";
+const API_URL = import.meta.env.VITE_API_URL;
 
 const Home = () => {
   const [tables, setTables] = useState([]);
@@ -12,7 +13,7 @@ const Home = () => {
     const fetchTables = async () => {
       try {
         // Fetching updated table statuses
-        const response = await axios.get("http://localhost:5000/api/tables");
+        const response = await axios.get(`${API_URL}/api/tables`);
         setTables(response.data);
       } catch (error) {
         console.error("Error fetching tables:", error);

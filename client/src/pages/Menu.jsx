@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../components/Navbar";
 import "../styles/Menu.css";
+const API_URL = import.meta.env.VITE_API_URL;
 
 const Menu = () => {
   const [menuItems, setMenuItems] = useState([]);
@@ -15,7 +16,7 @@ const Menu = () => {
   useEffect(() => {
     const fetchMenuItems = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/menu");
+        const response = await axios.get(`${API_URL}/api/menu`);
         setMenuItems(response.data);
       } catch (error) {
         console.error("Error fetching menu items:", error);

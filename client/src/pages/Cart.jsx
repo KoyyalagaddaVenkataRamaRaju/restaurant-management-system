@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import "../styles/Cart.css"; // Import CSS file
+const API_URL = import.meta.env.VITE_API_URL;
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -36,14 +37,14 @@ const Cart = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:5000/api/placeOrder", {
+      const response = await axios.post(`${API_URL}/api/placeOrder`, {
         tableNumber,
         items: cartItems,
         totalPrice,
       });
 
       // Change table status to "waiting for food"
-      await axios.put(`http://localhost:5000/api/tables/${tableNumber}`, { status: "waiting for food" });
+      await axios.put(`${API_URL}/api/tables/${tableNumber}`, { status: "waiting for food" });
 
       alert(response.data.message);
       setCartItems([]);

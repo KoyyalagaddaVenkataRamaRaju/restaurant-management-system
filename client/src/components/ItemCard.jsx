@@ -1,11 +1,12 @@
 import React from "react";
 import axios from "axios";
 import "../styles/ItemCard.css";
+const API_URL = import.meta.env.VITE_API_URL;
 
 const ItemCard = ({ item, tableNumber }) => {
   const handleAddToCart = async () => {
     try {
-      const response = await axios.post("http://localhost:5000/api/cart", {
+      const response = await axios.post(`${API_URL}/api/cart`, {
         tableNumber,
         itemId: item._id,
         name: item.name,
