@@ -6,7 +6,8 @@
   "client": "npm start --prefix client",  
   "client-build": "npm run build --prefix client",  
   "server": "node server.js",  
-  "dev": "concurrently \"npm run client\" \"npm run server\"",  
+  "build": "vite build",
+  "dev": "vite",
   "deploy": "npm run client-build && npm run server"  
 }
 ,
