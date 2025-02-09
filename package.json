@@ -1,0 +1,17 @@
+{
+  "name": "rms",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+  "client": "npm start --prefix client",  
+  "client-build": "npm run build --prefix client",  
+  "server": "node server.js",  
+  "dev": "concurrently \"npm run client\" \"npm run server\"",  
+  "deploy": "npm run client-build && npm run server"  
+}
+,
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
