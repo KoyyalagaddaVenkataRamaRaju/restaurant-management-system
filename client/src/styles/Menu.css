@@ -1,0 +1,141 @@
+/* Menu.css */
+
+.menu-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.menu-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.menu-item {
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin: 10px;
+  width: 200px;
+  text-align: center;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.menu-item h3 {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.menu-item p {
+  font-size: 1rem;
+  color: #888;
+}
+
+.quantity-input {
+  width: 50px;
+  padding: 5px;
+  margin-right: 10px;
+}
+
+.add-to-cart-btn {
+  padding: 8px 16px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #45a049;
+}
+
+.go-to-cart-btn {
+  display: block;
+  width: 200px;
+  padding: 10px;
+  margin: 20px auto;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.go-to-cart-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Alert message with updated design */
+.alert {
+  background-color: rgba(255, 111, 32, 0.9); /* Sunrise orange with transparency */
+  color: white;
+  padding: 12px 20px;
+  text-align: center;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: auto;
+  max-width: 250px; /* Decreased width */
+  position: fixed;
+  top: 50px; /* Positioned at the top */
+  right: 20px; /* Positioned at the right corner */
+  z-index: 1000; /* Ensure it appears above other elements */
+  opacity: 0; /* Initially hidden */
+  transform: translateY(30px); /* Positioned below initially */
+  animation: slideUp 3s ease-in-out forwards; /* Apply transition effect */
+}
+
+/* Keyframes for alert transition from bottom to top */
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px); /* Start from below */
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0); /* Slide up */
+  }
+  90% {
+    opacity: 1;
+    transform: translateY(0); /* Keep in position */
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-30px); /* Slide out upwards */
+  }
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .menu-items {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .menu-item {
+    width: 80%;
+    margin-bottom: 15px;
+  }
+
+  .go-to-cart-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .menu-item {
+    width: 90%;
+  }
+
+  .go-to-cart-btn {
+    width: 100%;
+  }
+}

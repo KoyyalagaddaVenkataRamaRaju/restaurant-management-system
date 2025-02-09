@@ -1,0 +1,156 @@
+/* General Page Styles */
+.owner-dashboard {
+  padding: 20px;
+  background-color: #f4f4f9;
+  font-family: Arial, sans-serif;
+}
+
+h2 {
+  font-size: 2rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+/* Navbar */
+.navbar {
+  margin-bottom: 20px;
+}
+
+/* Total Revenue Section */
+.total-revenue {
+  margin-bottom: 30px;
+  text-align: center;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.total-revenue h3 {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+/* Flex Layout for Forms */
+.dashboard-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: space-around;
+}
+
+.section {
+  width: 300px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.section:hover {
+  transform: translateY(-5px);
+}
+
+.section button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  width: 100%;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.section button:hover {
+  background-color: #0056b3;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form input,
+form select {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+form input[type="number"] {
+  width: 100%;
+}
+
+form button {
+  background-color: #28a745;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+form button:hover {
+  background-color: #218838;
+}
+
+/* Add User and Add Menu Item Forms */
+form input,
+form select {
+  margin-bottom: 15px;
+}
+
+form button {
+  width: 100%;
+  padding: 12px;
+  font-size: 1.1rem;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="number"] {
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+/* Add User / Menu Item Button */
+button {
+  width: 100%;
+  padding: 12px;
+  font-size: 1.1rem;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  .dashboard-flex {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .section {
+    width: 80%;
+  }
+
+  .total-revenue {
+    padding: 15px;
+  }
+}
