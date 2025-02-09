@@ -25,6 +25,11 @@ mongoose
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.error("MongoDB connection error:", err));
 
+
+// ✅ Sample Route to Test Deployment
+app.get("/", (req, res) => {
+  res.send("Backend is running on Vercel!");
+});
 // ✅ Authentication Routes
 app.post("/auth/register", async (req, res) => {
   try {
