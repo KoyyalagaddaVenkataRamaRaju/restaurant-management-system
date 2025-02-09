@@ -338,7 +338,16 @@ app.put('/api/tables/:id', async (req, res) => {
   }
 });
 
+// ✅ Serve static files in production
+if (process.env.NODE_ENV === 'production') {
+  // Serve the static files from the React app
+  app.use(express.static(path.join(__dirname, '../client/build')));
 
+  // For any other route, send the React app (handle routing within React)
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
+  });
+}
 
 // ✅ Start Server
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
