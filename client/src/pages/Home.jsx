@@ -22,7 +22,7 @@ const Home = () => {
     fetchTables(); // Initial fetch on load
     const interval = setInterval(() => {
       fetchTables(); // Polling every 10 seconds to update table statuses
-    }, 10000); // 10 seconds interval
+    }, 1000); // 10 seconds interval
 
     return () => clearInterval(interval); // Cleanup interval on component unmount
   }, []);

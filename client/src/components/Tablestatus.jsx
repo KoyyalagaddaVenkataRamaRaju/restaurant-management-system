@@ -23,7 +23,7 @@ const TableStatus = () => {
 
   return (
     <div>
-      <h2>Table Statuses</h2>
+      <h2>Tables Status</h2>
       <ul>
         {tables.map((table) => (
           <li key={table.tableNumber}>

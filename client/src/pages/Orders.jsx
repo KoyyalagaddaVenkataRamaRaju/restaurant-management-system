@@ -16,10 +16,7 @@ const Orders = () => {
     setUserRole(storedRole);
 
     // Redirect to a different page if the user is not a Cook
-    if (storedRole !== "cook") {
-      navigate("/orders"); // Redirect to Unauthorized page (you can create one)
-      return;
-    }
+
 
     // Fetch orders
     const fetchOrders = async () => {
@@ -42,6 +39,7 @@ const Orders = () => {
       // Change table status to "Eating"
       const tableResponse = await axios.put(`http://localhost:5000/api/tables/${tableNumber}`, { status: "eating" });
       console.log("Table update response:", tableResponse.data);
+
       setTimeout(async () => {
         try {
           // Change table status to "Free" after 1 minute
@@ -50,7 +48,8 @@ const Orders = () => {
         } catch (error) {
           console.error("Error updating table status to Free:", error);
         }
-      }, 60000); 
+      }, 6000); 
+
       // Show success alert
       setAlert({ message: "Order marked as Prepared and Table is Eating now!", type: "success" });
 
@@ -86,11 +85,11 @@ const Orders = () => {
               <ul>
                 {order.items.map((item, index) => (
                   <li key={index}>
-                    {item.name} - ${item.price} x {item.quantity}
+                    {item.name} - ₹{item.price} x {item.quantity}
                   </li>
                 ))}
               </ul>
-              <p><strong>Total Price:</strong> ${order.totalPrice}</p>
+              <p><strong>Total Price:</strong> ₹{order.totalPrice}</p>
               <p><strong>Status:</strong> {order.status}</p>
 
               {/* Show "Mark as Prepared" button only if user is a Cook and order is not yet prepared */}

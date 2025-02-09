@@ -68,19 +68,30 @@ const Cart = () => {
     <div>
       <Navbar />
       <h2>Cart</h2>
-      <h4>Table Number: {tableNumber}</h4>
+      <h1>Table Number: {tableNumber}</h1>
+      <div className="cart-main">
       {cartItems.length === 0 ? (
         <p>Your cart is empty.</p>
       ) : (
-        <ul>
-          {cartItems.map((item, index) => (
-            <li key={index} className="cart-item">
-              <span>{item.name} - ${item.price} x {item.quantity}</span>
-            </li>
-          ))}
-        </ul>
+        <ul className="cart-items-list">
+    {cartItems.map((item, index) => (
+      <li key={index} className="cart-item">
+        <div className="cart-item-details">
+          {/* Rectangle container for the image */}
+          <div className="cart-item-image-container">
+            <img src={item.imageUrl} alt={item.name} className="cart-item-image" />
+          </div>
+
+          {/* Item details */}
+          <span className="cart-item-info">
+            {item.name} - ₹{item.price} x {item.quantity}
+          </span>
+        </div>
+      </li>
+    ))}
+  </ul>
       )}
-      <h3>Total Price: ${calculateTotalPrice()}</h3>
+      <h3>Total Price: ₹{calculateTotalPrice()}</h3>
       {cartItems.length > 0 && (
         <button onClick={() => setShowConfirmation(true)}>Place Order</button>
       )}
@@ -106,6 +117,7 @@ const Cart = () => {
           </div>
         </div>
       )}
+    </div>
     </div>
   );
 };

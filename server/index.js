@@ -256,6 +256,9 @@ app.put("/api/orders/:orderId/prepare", async (req, res) => {
       return res.status(404).json({ message: "Order not found" });
     }
 
+    // Delete the order after marking it as prepared
+    await Order.findByIdAndDelete(orderId);
+
     // Update the table status to 'eating'
     const table = await Table.findOneAndUpdate(
       { tableNumber: order.tableNumber },
@@ -265,21 +268,23 @@ app.put("/api/orders/:orderId/prepare", async (req, res) => {
     if (!table) {
       return res.status(404).json({ message: "Table not found" });
     }
-// After 1 minute, set the table status back to 'free'
-setTimeout(async () => {
-  await Table.findOneAndUpdate(
-    { tableNumber: table.tableNumber },
-    { status: "free" }
-  );
-  console.log(`Table ${table.tableNumber} status updated to free`);
-}, 60000); // 1 minute = 60000 milliseconds
 
-res.json({ message: "Order marked as prepared and table status updated to eating", order, table });
-} catch (error) {
-console.error("Error updating order and table status:", error);
-res.status(500).json({ message: "Failed to update order and table status" });
-}
+    // After 1 minute, set the table status back to 'free'
+    setTimeout(async () => {
+      await Table.findOneAndUpdate(
+        { tableNumber: table.tableNumber },
+        { status: "free" }
+      );
+      console.log(`Table ${table.tableNumber} status updated to free`);
+    }, 6000); // 1 minute = 60000 milliseconds
+
+    res.json({ message: "Order marked as prepared, deleted, and table status updated to eating", order, table });
+  } catch (error) {
+    console.error("Error updating order and table status:", error);
+    res.status(500).json({ message: "Failed to update order and table status" });
+  }
 });
+
 app.put('/api/orders/:id', async (req, res) => {
   try {
     const { status } = req.body;
@@ -338,17 +343,20 @@ app.put('/api/tables/:id', async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 });
+// ✅ Delete orders with status 'prepared'
+const deletePreparedOrders = async () => {
+  try {
+    const deletedOrders = await Order.deleteMany({ status: 'prepared' });
+    console.log(`${deletedOrders.deletedCount} orders with status 'prepared' deleted successfully.`);
+  } catch (error) {
+    console.error("Error deleting orders with status 'prepared':", error);
+  }
+};
 
-// ✅ Serve static files in production
-if (process.env.NODE_ENV === 'production') {
-  // Serve the static files from the React app
-  app.use(express.static(path.join(__dirname, '../client/build')));
+// Schedule to run this function periodically, e.g., every 1 minute.
+setInterval(deletePreparedOrders, 60000); 
 
-  // For any other route, send the React app (handle routing within React)
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
-  });
-}
+
 
 // ✅ Start Server
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

@@ -20,6 +20,7 @@ const Navbar = () => {
           <Link to={tableNumber ? `/cart/${tableNumber}` : "/home"}>Cart</Link>
         </li>
         <li><Link to="/orders">Orders</Link></li>
+        <li><Link to="/owner-dashboard">Dashboard</Link></li>
         <li><Link to="/">Login</Link></li>
       </ul>
     </nav>

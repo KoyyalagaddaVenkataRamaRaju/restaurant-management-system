@@ -7,12 +7,12 @@ const ProtectedRoute = ({ children, allowedRoles }) => {
 
   if (!role) {
     console.log("No role found, redirecting to login.");
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/" replace />;
   }
 
   if (!allowedRoles.includes(role)) {
     console.log("Role not allowed, redirecting to login.");
-    return <Navigate to="/" replace />;
+    return <Navigate to="/home" replace />;
   }
 
   return children;

@@ -1,156 +1,239 @@
-/* General Page Styles */
+/* OwnerDashboard.css */
+
+/* General dashboard container */
 .owner-dashboard {
-  padding: 20px;
-  background-color: #f4f4f9;
-  font-family: Arial, sans-serif;
+  padding: 40px;
+  background-color: #f0e7fe; /* Light Violet Background */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 h2 {
-  font-size: 2rem;
-  color: #333;
   text-align: center;
   margin-bottom: 20px;
+  font-size: 2em;
+  color: #333;
+}
+
+/* Flex container for side-by-side layout */
+.dashboard-flex {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  width: 100%;
+  flex-grow: 1; /* Ensures it takes up the remaining space */
+}
+
+/* Section for each block (Total Revenue, Tables, etc.) */
+.section {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 50%; /* Ensures two sections are side by side */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.section form{
+margin-left:80px;
+}
+.section:hover {
+  transform: scale(1.02); /* Slight zoom effect on hover */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
 }
 
 h3 {
-  font-size: 1.2rem;
-  color: #555;
-  margin-bottom: 10px;
-}
-
-/* Navbar */
-.navbar {
-  margin-bottom: 20px;
-}
-
-/* Total Revenue Section */
-.total-revenue {
-  margin-bottom: 30px;
-  text-align: center;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.total-revenue h3 {
-  font-size: 1.5rem;
+  margin-bottom: 15px;
+  font-size: 1.5em;
   color: #333;
 }
 
-/* Flex Layout for Forms */
-.dashboard-flex {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  justify-content: space-around;
+/* Total Revenue Section (right side) */
+.total-revenue {
+  text-align: center;
+  margin-bottom: 20px;
+  background-color: #ffe3b3; /* Light Orange Background */
+  padding: 15px;
+  border-radius: 10px;
 }
 
-.section {
-  width: 300px;
-  background-color: #fff;
-  padding: 20px;
+.total-revenue h3 {
+  font-size: 1.5em;
+  color: #333;
+}
+
+/* Set of Tables Section (left side) */
+.tables-set {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 20px;
+  background-color: #ffe3b3; /* Same color as Total Revenue */
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.table {
+  background-color: white;
+  padding: 15px;
+  text-align: center;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 30%; /* Adjusts to three columns for set of tables */
 }
 
-.section:hover {
-  transform: translateY(-5px);
+.table h4 {
+  font-size: 1.2em;
+  color: #333;
 }
 
-.section button {
-  background-color: #007bff;
-  color: #fff;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1rem;
-  width: 100%;
-  margin-top: 10px;
-  transition: background-color 0.3s ease;
+.table p {
+  font-size: 1em;
+  color: #666;
 }
 
-.section button:hover {
-  background-color: #0056b3;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-}
-
-form input,
-form select {
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-}
-
-form input[type="number"] {
-  width: 100%;
-}
-
-form button {
-  background-color: #28a745;
-  color: #fff;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1rem;
-}
-
-form button:hover {
-  background-color: #218838;
-}
-
-/* Add User and Add Menu Item Forms */
-form input,
-form select {
-  margin-bottom: 15px;
-}
-
-form button {
+/* Form Styling */
+input[type="number"],
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select {
   width: 100%;
   padding: 12px;
-  font-size: 1.1rem;
-}
-
-form input[type="text"],
-form input[type="email"],
-form input[type="password"],
-form input[type="number"] {
-  padding: 12px;
-  margin-bottom: 15px;
-  border-radius: 8px;
+  margin: 8px 0;
   border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1em;
+  transition: border-color 0.3s ease;
 }
 
-/* Add User / Menu Item Button */
+input[type="number"]:focus,
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+select:focus {
+  border-color: #ffa500; /* Light Orange border on focus */
+}
+
 button {
-  width: 100%;
+  background-color: #ffa500; /* Light Orange */
+  color: white;
   padding: 12px;
-  font-size: 1.1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1.1em;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 button:hover {
-  opacity: 0.9;
+  background-color: #e68900; /* Darker Orange */
+  transform: scale(1.05); /* Button hover effect */
 }
 
+button:focus {
+  outline: none;
+}
+
+/* Flex for buttons and forms */
+button + form {
+  margin-top: 10px;
+}
+
+/* Add Menu Item Form & User Form */
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form select {
+  width: 100%;
+}
+
+form input[type="number"] {
+  width: 100%; /* 50% width, leaving a small gap */
+  display: inline-block;
+  margin-right: 4%;
+}
+
+form input[type="text"]:last-of-type,
+form input[type="email"]:last-of-type,
+form input[type="password"]:last-of-type {
+  width: 100%; /* 50% width for the second input */
+  display: inline-block;
+}
+
+form select {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+/* Add button toggle */
+button + form {
+  margin-top: 10px;
+}
+
+/* Modal for Add Menu Item and Add User Form */
+form {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Adjustments */
 @media (max-width: 768px) {
   .dashboard-flex {
     flex-direction: column;
-    align-items: center;
+    gap: 20px;
   }
 
   .section {
-    width: 80%;
+    width: 100%;
   }
 
-  .total-revenue {
-    padding: 15px;
+  .tables-set {
+    flex-direction: column;
   }
+
+  .table {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  h2 {
+    font-size: 1.8em;
+  }
+
+  .total-revenue h3 {
+    font-size: 1.3em;
+  }
+}
+
+.dash-cont {
+  display: flex;
+  flex-direction:row;
+  align-items: center;
+  background-color: #fff;
+  margin-bottom: 40px;
+  justify-content: space-around;
+  width: 100%;
+  flex-grow: 1; /* Ensures it takes up the remaining space */
+  padding: 20px;
+  border: 3px solid #ffa500;
+  gap: 40px;
+}
+.dash-cont .cont1 ,.revenue-table-container,.set-tables{
+  border: 2px solid #e68900;
+  padding: 40px;
+}
+.revenue-table-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 20px;
 }

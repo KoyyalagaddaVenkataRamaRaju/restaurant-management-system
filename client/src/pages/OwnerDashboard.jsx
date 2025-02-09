@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Navbar from "../components/Navbar";
-import "../styles/OwnerDashboard.css"
+import "../styles/OwnerDashboard.css";
 import TableStatus from "../components/Tablestatus";
 
 const OwnerDashboard = () => {
@@ -28,7 +28,10 @@ const OwnerDashboard = () => {
     const fetchTotalRevenue = async () => {
       try {
         const response = await axios.get("http://localhost:5000/api/orders");
-        const total = response.data.reduce((acc, order) => acc + order.totalPrice, 0);
+        const total = response.data.reduce(
+          (acc, order) => acc + order.totalPrice,
+          0
+        );
         setTotalRevenue(total);
       } catch (error) {
         console.error("Error fetching total revenue:", error);
@@ -48,7 +51,10 @@ const OwnerDashboard = () => {
       alert(response.data.message);
       setNumTables("");
     } catch (error) {
-      console.error("Error adding tables:", error.response?.data || error.message);
+      console.error(
+        "Error adding tables:",
+        error.response?.data || error.message
+      );
       alert("Failed to add tables!");
     }
   };
@@ -57,12 +63,18 @@ const OwnerDashboard = () => {
   const handleAddUserSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/api/users", userFormData);
+      const response = await axios.post(
+        "http://localhost:5000/api/users",
+        userFormData
+      );
       alert(response.data.message);
       setUserFormData({ name: "", email: "", password: "", role: "waiter" });
       setShowAddUserForm(false); // Close the form
     } catch (error) {
-      console.error("Error adding user:", error.response?.data || error.message);
+      console.error(
+        "Error adding user:",
+        error.response?.data || error.message
+      );
       alert("Failed to add user!");
     }
   };
@@ -71,12 +83,24 @@ const OwnerDashboard = () => {
   const handleAddMenuItemSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/api/menu", menuItemFormData);
+      const response = await axios.post(
+        "http://localhost:5000/api/menu",
+        menuItemFormData
+      );
       alert(response.data.message);
-      setMenuItemFormData({ name: "", price: 0, category: "", type: "", imageUrl: "" });
+      setMenuItemFormData({
+        name: "",
+        price: 0,
+        category: "",
+        type: "",
+        imageUrl: "",
+      });
       setShowAddMenuItemForm(false); // Close the form
     } catch (error) {
-      console.error("Error adding menu item:", error.response?.data || error.message);
+      console.error(
+        "Error adding menu item:",
+        error.response?.data || error.message
+      );
       alert("Failed to add menu item!");
     }
   };
@@ -85,16 +109,21 @@ const OwnerDashboard = () => {
     <div className="owner-dashboard">
       <h2>Owner Dashboard</h2>
       <Navbar />
-      <TableStatus/>
-      {/* Total Revenue Section */}
-      <div className="total-revenue">
-        <h3>Total Revenue: ${totalRevenue}</h3>
-      </div>
+      <div className="dash-cont">
+        <div className="cont1">
+          <TableStatus />
+        </div>
 
-      {/* Flex Layout for Forms */}
-      <div className="dashboard-flex">
+        {/* Flex Layout for Revenue and Tables */}
+        <div className="revenue-table-container">
+          {/* Total Revenue Section */}
+          <div className="total-revenue">
+            <h3>Total Revenue: ${totalRevenue}</h3>
+          </div>
+        </div>
+
         {/* Set Number of Tables Form */}
-        <div className="section">
+        <div className="set-tables">
           <h3>Set Number of Tables</h3>
           <form onSubmit={handleTableSubmit}>
             <input
@@ -107,7 +136,10 @@ const OwnerDashboard = () => {
             <button type="submit">Set Tables</button>
           </form>
         </div>
+      </div>
 
+      {/* Flex Layout for Forms */}
+      <div className="dashboard-flex">
         {/* Add User Button */}
         <div className="section">
           <button onClick={() => setShowAddUserForm(!showAddUserForm)}>
@@ -173,7 +205,10 @@ const OwnerDashboard = () => {
                 type="text"
                 value={menuItemFormData.name}
                 onChange={(e) =>
-                  setMenuItemFormData({ ...menuItemFormData, name: e.target.value })
+                  setMenuItemFormData({
+                    ...menuItemFormData,
+                    name: e.target.value,
+                  })
                 }
                 placeholder="Enter menu item name"
                 required
@@ -194,7 +229,10 @@ const OwnerDashboard = () => {
                 type="text"
                 value={menuItemFormData.category}
                 onChange={(e) =>
-                  setMenuItemFormData({ ...menuItemFormData, category: e.target.value })
+                  setMenuItemFormData({
+                    ...menuItemFormData,
+                    category: e.target.value,
+                  })
                 }
                 placeholder="Enter category"
                 required
@@ -203,7 +241,10 @@ const OwnerDashboard = () => {
                 type="text"
                 value={menuItemFormData.type}
                 onChange={(e) =>
-                  setMenuItemFormData({ ...menuItemFormData, type: e.target.value })
+                  setMenuItemFormData({
+                    ...menuItemFormData,
+                    type: e.target.value,
+                  })
                 }
                 placeholder="Enter type"
                 required
@@ -212,7 +253,10 @@ const OwnerDashboard = () => {
                 type="text"
                 value={menuItemFormData.imageUrl}
                 onChange={(e) =>
-                  setMenuItemFormData({ ...menuItemFormData, imageUrl: e.target.value })
+                  setMenuItemFormData({
+                    ...menuItemFormData,
+                    imageUrl: e.target.value,
+                  })
                 }
                 placeholder="Enter image URL"
                 required

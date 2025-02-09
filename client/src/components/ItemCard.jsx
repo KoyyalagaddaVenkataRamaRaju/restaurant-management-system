@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import "../styles/ItemCard.css"
+import "../styles/ItemCard.css";
 
 const ItemCard = ({ item, tableNumber }) => {
   const handleAddToCart = async () => {
@@ -21,7 +21,7 @@ const ItemCard = ({ item, tableNumber }) => {
 
   return (
     <div className="item-card">
-      <img src={item.imageUrl} alt={item.name} className="item-image" />
+      <img src={item.imageUrl} alt={item.name} className="item-image" /> {/* Display the item image */}
       <h3>{item.name}</h3>
       <p>Price: ${item.price}</p>
       <button onClick={handleAddToCart}>Add to Cart</button>
