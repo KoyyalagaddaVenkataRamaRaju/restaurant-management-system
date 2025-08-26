@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/Login.css";
 
 const API_URL = import.meta.env.VITE_API_URL;
