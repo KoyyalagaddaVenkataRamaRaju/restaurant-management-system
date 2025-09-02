@@ -1,0 +1,69 @@
+/* Orders.css */
+
+/* Orders Page Styles */
+.orders-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+}
+
+h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.order-item {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  padding: 15px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.order-item:hover {
+  transform: scale(1.02);
+}
+
+.order-item h4 {
+  font-size: 20px;
+  color: #444;
+  margin-bottom: 10px;
+}
+
+.order-item ul {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 10px;
+}
+
+.order-item li {
+  font-size: 16px;
+  color: #555;
+}
+
+.order-item p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+/* Button Styles */
+.mark-prepared-btn {
+  background-color: #4CAF50;
+  color: white;
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.mark-prepared-btn:hover {
+  background-color: #45a049;
+}
+
+/* Alert Styles */
+
